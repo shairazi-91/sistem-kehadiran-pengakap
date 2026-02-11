@@ -1,0 +1,29 @@
+.attendance-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.attendance-form input[type='checkbox'] {
+    margin: 10px 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.frequency-display {
+    font-weight: bold;
+    margin-top: 10px;
+}
