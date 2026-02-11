@@ -1,29 +1,51 @@
-.attendance-form {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
+/* Professional CSS Styling */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+    color: #333;
 }
 
-.attendance-form input[type='checkbox'] {
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     margin: 10px 0;
+    transition: transform 0.2s;
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
+.card:hover {
+    transform: scale(1.03);
 }
 
-.table th, .table td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
 
-.table th {
-    background-color: #f2f2f2;
+    header {
+        padding: 20px 0;
+        font-size: 1.5em;
+    }
 }
-
-.frequency-display {
-    font-weight: bold;
-    margin-top: 10px;
+@media (max-width: 480px) {
+    .card {
+        padding: 15px;
+    }
 }
