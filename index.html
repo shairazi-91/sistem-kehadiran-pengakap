@@ -1,45 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Form</title>
+    <title> Sistem Kehadiran Pengakap </title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Attendance Form</h1>
-    <form>
-        <h2>Student List</h2>
-        <ul>
-            <li><input type="checkbox" name="student1"> Student 1</li>
-            <li><input type="checkbox" name="student2"> Student 2</li>
-            <li><input type="checkbox" name="student3"> Student 3</li>
-            <li><input type="checkbox" name="student4"> Student 4</li>
-            <li><input type="checkbox" name="student5"> Student 5</li>
-            <li><input type="checkbox" name="student6"> Student 6</li>
-            <li><input type="checkbox" name="student7"> Student 7</li>
-            <li><input type="checkbox" name="student8"> Student 8</li>
-            <li><input type="checkbox" name="student9"> Student 9</li>
-            <li><input type="checkbox" name="student10"> Student 10</li>
-            <li><input type="checkbox" name="student11"> Student 11</li>
-            <li><input type="checkbox" name="student12"> Student 12</li>
-            <li><input type="checkbox" name="student13"> Student 13</li>
-            <li><input type="checkbox" name="student14"> Student 14</li>
-            <li><input type="checkbox" name="student15"> Student 15</li>
-            <li><input type="checkbox" name="student16"> Student 16</li>
-            <li><input type="checkbox" name="student17"> Student 17</li>
-            <li><input type="checkbox" name="student18"> Student 18</li>
-            <li><input type="checkbox" name="student19"> Student 19</li>
-            <li><input type="checkbox" name="student20"> Student 20</li>
-        </ul>
-        <h2>Attendance Frequency</h2>
-        <label for="frequency">Frequency:</label>
-        <select id="frequency" name="frequency">
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-        </select>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
+    <header>
+        <h1>Sistem Kehadiran Pengakap</h1>
+    </header>
+    <main>
+        <section id="attendance-form">
+            <h2>Form Kehadiran</h2>
+            <form>
+                <label for="name">Nama: </label>
+                <input type="text" id="name" name="name" required>
+                <label for="date">Tarikh: </label>
+                <input type="date" id="date" name="date" required>
+                <label for="attendance">Kehadiran: </label>
+                <select id="attendance" name="attendance" required>
+                    <option value="present">Hadir</option>
+                    <option value="absent">Tidak Hadir</option>
+                </select>
+                <button type="submit">Hantar</button>
+            </form>
+        </section>
+        <section id="frequency-report">
+            <h2>Laporan Frekuensi</h2>
+            <p>Menampilkan laporan kehadiran secara berkala.</p>
+            <!-- Table or report will go here -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Sistem Kehadiran Pengakap</p>
+    </footer>
 </body>
 </html>
