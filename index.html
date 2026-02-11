@@ -1,1 +1,115 @@
-<!DOCTYPE html>\n<html lang='en'>\n<head>\n    <meta charset='UTF-8'>\n    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n    <title>Attendance Tracker</title>\n    <style>\n        body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; margin: 0; padding: 20px; }\n        h1 { text-align: center; }\n        table { width: 100%; border-collapse: collapse; margin: 20px 0; }\n        th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }\n        th { background-color: #4CAF50; color: white; }\n        .frequency { margin-top: 20px; }\n    </style>\n</head>\n<body>\n    <h1>Attendance Tracker</h1>\n    <table id='attendanceTable'>\n        <thead>\n            <tr>\n                <th>Name</th>\n                <th>Attendance</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr>\n                <td>Student 1</td>\n                <td><input type='checkbox' class='attendance-checkbox' /></td>\n            </tr>\n            <tr>\n                <td>Student 2</td>\n                <td><input type='checkbox' class='attendance-checkbox' /></td>\n            </tr>\n            <tr>\n                <td>Student 3</td>\n                <td><input type='checkbox' class='attendance-checkbox' /></td>\n            </tr>\n        </tbody>\n    </table>\n    <div class='frequency'>\n        <button onclick='calculateFrequency()'>Calculate Attendance Frequency</button>\n        <p id='frequencyDisplay'></p>\n    </div>\n    <script>\n        function calculateFrequency() {\n            const checkboxes = document.querySelectorAll('.attendance-checkbox');\n            let total = checkboxes.length;\n            let checked = 0;\n            checkboxes.forEach(checkbox => {\n                if (checkbox.checked) {\n                    checked++;\n                }\n            });\n            const frequency = (checked / total) * 100;\n            document.getElementById('frequencyDisplay').innerText = `Attendance Frequency: ${frequency.toFixed(2)}%`;;\n        }\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #stats {
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance System</h1>
+    <table id="attendanceTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Present</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Usernames -->
+            <tr><td>Ali</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Siti</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Ahmad</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Fatimah</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Ravi</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Siti Aisyah</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Danial</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Sarah</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Imran</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Lina</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Aishah</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Nik</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Farah</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Hafiz</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Wahyu</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Jayden</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Hanis</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Rina</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Shawn</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Syafiq</td><td><input type="checkbox" class="attendance"></td></tr>
+            <tr><td>Elaine</td><td><input type="checkbox" class="attendance"></td></tr>
+        </tbody>
+    </table>
+    <div id="stats">
+        <p>Total Present: <span id="totalPresent">0</span></p>
+        <p>Total Absent: <span id="totalAbsent">20</span></p>
+    </div>
+    <button onclick="calculateStats()">Calculate Attendance</button>
+    <button onclick="exportData()">Export Data</button>
+    <script>
+        function calculateStats() {
+            const checkboxes = document.querySelectorAll('.attendance');
+            let totalPresent = 0;
+            const totalStudents = checkboxes.length;
+
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalPresent++;  
+                }
+            });
+            document.getElementById('totalPresent').innerText = totalPresent;
+            document.getElementById('totalAbsent').innerText = totalStudents - totalPresent;
+        }
+        function exportData() {
+            const checkboxes = document.querySelectorAll('.attendance');
+            const attendanceData = Array.from(checkboxes).map((checkbox, index) => {
+                return {
+                    name: document.querySelectorAll('tbody tr td:first-child')[index].innerText,
+                    present: checkbox.checked
+                };
+            });
+            const dataStr = JSON.stringify(attendanceData, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'attendance.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
